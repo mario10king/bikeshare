@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "node-fetch": "^1.7.3"
   }
 }
