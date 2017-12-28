@@ -1,0 +1,39 @@
+<iframe
+  id="first"
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src=""
+  allowfullscreen>
+</iframe>
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCRgsy8jTp5P16yHTE-3nTUb0iOn9dDpCY
+  &origin=Space+Needle,Seattle+WA
+  &waypoints=portland|sacramento+ca
+  &destination=Los+Angeles+ca
+  &mode=bicycling"
+  allowfullscreen>
+</iframe>
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCRgsy8jTp5P16yHTE-3nTUb0iOn9dDpCY
+  &origin=Space+Needle,Seattle+WA
+  &waypoints=portland|sacramento+ca
+  &destination=Los+Angeles+ca
+  &mode=walking"
+  allowfullscreen>
+</iframe>
+<script>
+  var url="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCRgsy8jTp5P16yHTE-3nTUb0iOn9dDpCY"
+  var firstRoute = url+" &origin=Space+Needle,Seattle+WA&destination=Los+Angeles+ca&mode=walking";
+  var secondRoute = url+" &origin=Space+Needle,Seattle+WA&destination=Los+Angeles+ca&mode=bycycling";
+  var thirdRoute = url+" &origin=Space+Needle,Seattle+WA&destination=Los+Angeles+ca&mode=walking";
+document.getElementById('first').src = firstRoute
+document.getElementById('second').src = secondRoute
+document.getElementById('third').src = thirdRoute
+</script>
