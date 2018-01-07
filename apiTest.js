@@ -2,13 +2,12 @@ const fetch = require("node-fetch");
 const googleAPI = require("./googleApi");
 
 function controller(origin, destination){
-  getStationsInfo.then(function(info){
+  return getStationsInfo.then(function(info){
     var formattedStations = formatStations(info)
-    googleAPI(origin, destination, formattedStations).then(function(ids){
-      console.log(getAddresses(ids, info))
+    return googleAPI(origin, destination, formattedStations).then(function(ids){
+      return getAddresses(ids, info)
     })
-  })
-}
+  })}
 
 var getStationsInfo = fetch("http://santamonicabikeshare.com/opendata/station_information.json")
   .then(function(response) {
@@ -38,4 +37,5 @@ function formatStations(info){
     });
 }
 
+module.exports = controller
 controller("242 25th St Santa Monica CA 90402", "1210 Ozone Ave Santa Monica CA 90405")//random addresses
