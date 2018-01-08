@@ -15,7 +15,11 @@ app.get('/', (req, res) => res.sendFile('index.html',  {root: __dirname }))
 app.post('/', function(req, res) {
   controller(req.body.origin, req.body.destination).then(
   function(response){
-    res.render('test.html',  {origin: response[0], destination: response[1], root: __dirname })
+    var walkingOrigin = req.body.origin.replace(",","").split(" ").join("+")
+    var walkingDestination =  req.body.destination.replace(",","").split(" ").join("+")
+    var origin = response[0].replace(",","").split(" ").join("+")
+    var destination =  response[1].replace(",","").split(" ").join("+")
+    res.render('map.html',  {walkingOrigin: walkingOrigin, walkingDestination: walkingDestination, origin: origin, destination: destination, root: __dirname })
   })
 })
 

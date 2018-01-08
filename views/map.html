@@ -3,9 +3,9 @@
   height="450"
   frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCRgsy8jTp5P16yHTE-3nTUb0iOn9dDpCY
-  &origin=Space+Needle,Seattle+WA
-  &destination="+{{origin}}+
-  "&mode=walking"
+  &origin={{walkingOrigin}}
+  &destination={{origin}}
+  &mode=walking"
   allowfullscreen>
 </iframe>
 <iframe
@@ -13,8 +13,8 @@
   height="450"
   frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCRgsy8jTp5P16yHTE-3nTUb0iOn9dDpCY
-  &origin="+{{origin}}+
- "&destination="+{{destination}}+
+  &origin={{origin}}
+ &destination={{destination}}
   &mode=bicycling"
   allowfullscreen>
 </iframe>
@@ -23,8 +23,8 @@
   height="450"
   frameborder="0" style="border:0"
   src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCRgsy8jTp5P16yHTE-3nTUb0iOn9dDpCY
-  &origin="+{{destination}}+
-  "&destination=Los+Angeles+ca
+  &origin={{destination}}
+  &destination={{walkingDestination}}
   &mode=walking"
   allowfullscreen>
 </iframe>
