@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Directions</title>
-<style>
+    <style>
       html, body {
         height: 100%;
         margin: 0;
@@ -15,27 +15,60 @@
   </head>
   <body>
     <div id="map"></div>
-    </div>
     <script>
       function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var firstLeg = new google.maps.DirectionsRenderer;
-        var secondLeg = new google.maps.DirectionsRenderer;
-        var thirdLeg = new google.maps.DirectionsRenderer;
+        // Render Direction Results For Each Leg
+        var firstLeg = new google.maps.DirectionsRenderer({suppressMarkers:true});
+        var secondLeg = new google.maps.DirectionsRenderer({suppressMarkers: true});
+        var thirdLeg = new google.maps.DirectionsRenderer({suppressMarkers: true});
+
+        //Create Map
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 20,
           center: {lat: 34.02, lng: -118.47}
         });
+
+        //Tell Directions Where To Display
         firstLeg.setMap(map);
         secondLeg.setMap(map);
         thirdLeg.setMap(map);
 
-        calculateAndDisplayRoute(directionsService, firstLeg, "WALKING", '{{walkingOrigin}}', '{{origin}}');
-        calculateAndDisplayRoute(directionsService, secondLeg, "BICYCLING", '{{origin}}','{{destination}}');
-        calculateAndDisplayRoute(directionsService, thirdLeg, "WALKING",'{{destination}}','{{walkingDestination}}');
+        //Turn Addresses into Coordinates
+        coordinates('A', '{{walkingOrigin}}', map)
+        coordinates('B','{{origin}}', map)
+        coordinates('C','{{destination}}', map)
+        coordinates('D','{{walkingDestination}}', map)
+
+        calculateAndDisplayRoute(firstLeg, "WALKING", '{{walkingOrigin}}', '{{origin}}');
+        calculateAndDisplayRoute(secondLeg, "BICYCLING", '{{origin}}','{{destination}}');
+        calculateAndDisplayRoute(thirdLeg, "WALKING",'{{destination}}','{{walkingDestination}}');
       }
 
-      function calculateAndDisplayRoute(directionsService, leg, travelMode, origin, destination) {
+      function coordinates(label, address, map){
+        var geocoder =  new google.maps.Geocoder;
+        var coordinates;
+        geocoder.geocode({'address': address }, function(results, status){
+          if (status == 'OK') {
+            coordinates = results[0].geometry.location
+
+            //Create Markers
+            createMarkers(label, coordinates, map)
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        })
+      }
+
+      function createMarkers(label, coordinates, map){
+        new google.maps.Marker({
+          position: coordinates,
+          label: label,
+          map: map
+        });
+      }
+
+      function calculateAndDisplayRoute(leg, travelMode, origin, destination) {
+        var directionsService = new google.maps.DirectionsService;
         directionsService.route({
           origin: origin,
           destination: destination,
