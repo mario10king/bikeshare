@@ -10,21 +10,41 @@
       }
       #map {
         height: 100%;
+        width: 60%;
+        display: inline-block;
+      }
+      #instructions {
+        display: inline-block;
+        width: 39%;
+        position: absolute;
+        top: 0px;
+        font-size: 24px;
+      }
+      h1 {
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <div id="map"></div>
+    <div id="instructions">
+      <h1>How Does it Work?</h1><br>
+      <ol>
+        <li>Point A to B is walking directions from origin to nearest biking dock.</li><br><br>
+        <li>Point B to C is bicycling directions from nearest biking dock from origin to nearest biking dock to destination.</li><br><br>
+        <li>Point C to D is walking directions from biking dock to destination.</li><br><br>
+      </ol>
+    </div>
     <script>
       function initMap() {
         // Render Direction Results For Each Leg
-        var firstLeg = new google.maps.DirectionsRenderer({suppressMarkers:true});
-        var secondLeg = new google.maps.DirectionsRenderer({suppressMarkers: true});
-        var thirdLeg = new google.maps.DirectionsRenderer({suppressMarkers: true});
+        var firstLeg = new google.maps.DirectionsRenderer({suppressMarkers:true, preserveViewport: true});
+        var secondLeg = new google.maps.DirectionsRenderer({suppressMarkers: true, suppressBicyclingLayer: true, preserveViewport: true});
+        var thirdLeg = new google.maps.DirectionsRenderer({suppressMarkers: true, preserveViewport: true});
 
         //Create Map
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 20,
+          zoom: 12,
           center: {lat: 34.02, lng: -118.47}
         });
 
