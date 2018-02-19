@@ -11,8 +11,8 @@ app.engine('html', cons.handlebars);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-app.get('/', (req, res) => res.sendFile('index.html', { root: __dirname }));
-
+app.use(express.static('public'));
+app.get('/', (req, res) => res.sendFile('public/html/index.html', { root: __dirname }));
 app.post('/', function(req, res) {
   controller(req.body.origin, req.body.destination).then(function(response) {
     var walkingOrigin = req.body.origin;
