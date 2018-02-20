@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100%;
+  width: 60%;
+  display: inline-block;
+}
+#instructions {
+  display: inline-block;
+  width: 39%;
+  position: absolute;
+  top: 0px;
+  font-size: 24px;
+}
+h1 {
+  text-align: center;
+}
+ul{
+  list-style: none;
+}

@@ -2,37 +2,24 @@
 <html>
   <head>
     <title>Directions</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-        width: 60%;
-        display: inline-block;
-      }
-      #instructions {
-        display: inline-block;
-        width: 39%;
-        position: absolute;
-        top: 0px;
-        font-size: 24px;
-      }
-      h1 {
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/map.css">
   </head>
   <body>
     <div id="map"></div>
     <div id="instructions">
       <h1>How Does it Work?</h1><br>
+      <h3>Markers</h3>
+      <ul>
+        <li>A: Starting Point </li>
+        <li>B: Nearest Bike Station to Starting Point</li>
+        <li>C: Nearest Bike Station to Destination</li>
+        <li>D: Destination</li><br><br>
+      </ul>
+      <h3>Legs</h3>
       <ol>
-        <li>Point A to B is walking directions from origin to nearest biking dock.</li><br><br>
-        <li>Point B to C is bicycling directions from nearest biking dock from origin to nearest biking dock to destination.</li><br><br>
-        <li>Point C to D is walking directions from biking dock to destination.</li><br><br>
+        <li>Walk from A to B </li>
+        <li>Bike from B to C </li>
+        <li>Walk form C to D </li>
       </ol>
     </div>
     <script>
