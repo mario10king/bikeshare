@@ -43,7 +43,7 @@ function formatStations(info) {
 }
 
 module.exports = controller;
-controller(
-  '242 25th St Santa Monica CA 90402',
-  '1210 Ozone Ave Santa Monica CA 90405'
-); //random addresses
+//controller(
+  //'242 25th St Santa Monica CA 90402',
+  //'1210 Ozone Ave Santa Monica CA 90405'
+//); //random addresses
